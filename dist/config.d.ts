@@ -1,3 +1,4 @@
+/// <reference types="request" />
 import request = require('request');
 import api = require('./api');
 import { Cluster, User, Context } from './config_types';

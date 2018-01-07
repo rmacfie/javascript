@@ -17,8 +17,12 @@
   "dependencies": {
     "@types/base-64": "^0.1.2",
     "@types/bluebird": "^3.5.7",
+    "@types/byline": "^4.2.31",
     "@types/js-yaml": "^3.5.31",
+    "@types/jsonpath": "^0.2.0",
     "@types/node": "^8.0.2",
+    "@types/request": "^2.0.9",
+    "@types/shelljs": "^0.7.7",
     "@types/underscore": "^1.8.1",
     "@types/websocket": "0.0.35",
     "base-64": "^0.1.0",

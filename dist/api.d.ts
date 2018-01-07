@@ -1,3 +1,4 @@
+/// <reference types="request" />
 /// <reference types="bluebird" />
 /// <reference types="node" />
 import request = require('request');

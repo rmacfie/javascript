@@ -27,7 +27,7 @@ export class WebSocketHandler {
                    textHandler: (text: string) => void,
                    binaryHandler: (stream: number, buff: Buffer) => void): Promise<ws.connection> {
         let opts = {};
-        this.config.applyToRequest(opts);
+        this.config.applyToRequest(opts as any);
         let client = new ws.client({ 'tlsOptions': opts });
 
         return new Promise((resolve, reject) => {
