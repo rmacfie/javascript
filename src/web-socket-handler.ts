@@ -40,7 +40,7 @@ export class WebSocketHandler {
                     }
                     else if (message.type === 'binary') {
                         if (binaryHandler) {
-                            let stream = message.binaryData.readInt8();
+                            let stream = message.binaryData.readInt8(0);
                             binaryHandler(stream, message.binaryData.slice(1));
                         }
                     }
@@ -99,7 +99,7 @@ export class WebSocketHandler {
         });
 
         stdin.on('end', () => {
-            conn.close(ws.connection.CLOSE_REASON_NORMAL);
+            (conn as any).close(ws.connection.CLOSE_REASON_NORMAL);
         });
     }
 }

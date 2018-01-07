@@ -29,6 +29,6 @@ export class Exec {
         if (stdin != null) {
             WebSocketHandler.handleStandardInput(conn, stdin);
         }
-        return conn as WebSocket;
+        return conn as any as WebSocket;
     }
 }

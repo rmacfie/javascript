@@ -25,7 +25,7 @@ class WebSocketHandler {
                     }
                     else if (message.type === 'binary') {
                         if (binaryHandler) {
-                            let stream = message.binaryData.readInt8();
+                            let stream = message.binaryData.readInt8(0);
                             binaryHandler(stream, message.binaryData.slice(1));
                         }
                     }
