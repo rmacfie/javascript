@@ -1,4 +1,7 @@
 {
+    "include": [
+        "src/**/*"
+    ],
     "compilerOptions": {
         "module": "commonjs",
         "noImplicitAny": false,
@@ -10,14 +13,5 @@
         "noLib": false,
         "declaration": true,
         "outDir": "dist"
-    },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ],
-    "include": [
-        "*.ts",
-        "src/**/*"
-    ]
+    }
 }
-

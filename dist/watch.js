@@ -1,21 +1,16 @@
-import request = require('request');
-import { LineStream } from 'byline';
-import { KubeConfig } from '@kubernetes/client-node';
-
-export class Watch {
-    'config': KubeConfig;
-
-    public constructor(config: KubeConfig) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const request = require("request");
+const byline_1 = require("byline");
+class Watch {
+    constructor(config) {
         this.config = config;
     }
-
-    public watch(path: string, queryParams: any, callback: (phase: string, obj: any) => void, done: (err: any) => void): any {
+    watch(path, queryParams, callback, done) {
         let url = this.config.getCurrentCluster().server + path;
-
         queryParams['watch'] = true;
-        let headerParams: any = {};
-
-        let requestOptions: request.Options = {
+        let headerParams = {};
+        let requestOptions = {
             method: 'GET',
             qs: queryParams,
             headers: headerParams,
@@ -24,22 +19,22 @@ export class Watch {
             json: true
         };
         this.config.applyToRequest(requestOptions);
-        
-        let stream = new LineStream();
+        let stream = new byline_1.LineStream();
         stream.on('data', (data) => {
             let obj = null;
             if (data instanceof Buffer) {
                 obj = JSON.parse(data.toString());
-            } else {
+            }
+            else {
                 obj = JSON.parse(data);
             }
             if (obj['type'] && obj['object']) {
                 callback(obj['type'], obj['object']);
-            } else {
+            }
+            else {
                 console.log('unexpected object: ' + obj);
             }
         });
-
         let req = request(requestOptions, (error, response, body) => {
             if (error) {
                 done(error);
@@ -50,3 +45,5 @@ export class Watch {
         return req;
     }
 }
+exports.Watch = Watch;
+//# sourceMappingURL=watch.js.map
